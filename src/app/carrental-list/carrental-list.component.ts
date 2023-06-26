@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { Carrental } from '../carrental';
 import { CarrentalService } from '../carrental.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-carrental-list',
   templateUrl: './carrental-list.component.html',
@@ -9,11 +9,19 @@ import { CarrentalService } from '../carrental.service';
 })
 export class CarrentalListComponent implements OnInit {
 carrental!:Carrental[];
+constructor(private carrentalService: CarrentalService,
+  private router: Router) { }
+
 ngOnInit(): void {
-  this.getCarrentals();
+  this.getCarrental();
 }
-constructor(private carrentalService:CarrentalService){}
-private getCarrentals(){
-  this.carrentalService.getCarrentalList().subscribe((data=>{this.carrental=data;}));
+
+private getCarrental(){
+  this.carrentalService.getCarrentalList().subscribe(data=>{
+    this.carrental=data;
+  });
+}
+carrentalDetails(id: number){
+  this.router.navigate(['carrental-details',id]);
 }
 }

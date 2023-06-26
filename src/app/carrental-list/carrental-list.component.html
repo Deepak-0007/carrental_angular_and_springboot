@@ -1,10 +1,12 @@
-<p>carrental-list works!</p>
+
 <table>
     <thead>
-        <th>car_name</th>
-        <th>rent</th>
-        <th>rental_name</th>
-        <th>time</th>
+        <tr>
+          <th>car_name</th>
+          <th>rent</th>
+          <th>rental_name</th>
+          <th>time</th>
+        </tr>
     </thead>
     <tbody>
         <tr *ngFor="let car of carrental">
@@ -12,6 +14,7 @@
             <td>{{car.rent}}</td>
             <td>{{car.rental_name}}</td>
             <td>{{car.time}}</td>
+            
         </tr>
     </tbody>
 </table>
